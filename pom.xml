@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Copyright 2018 Joao Silva
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.jpmsilva.rewrite-spring-boot-starter</groupId>
+  <artifactId>rewrite-spring-boot-starter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>rewrite-spring-boot-starter</name>
+  <description>A Spring Boot starter for OCPSoft Rewrite</description>
+
+  <inceptionYear>2018</inceptionYear>
+
+  <url>https://jpmsilva.github.io/rewrite-spring-boot-starter-site/</url>
+
+  <issueManagement>
+    <url>https://github.com/jpmsilva/rewrite-spring-boot-starter/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/jpmsilva/rewrite-spring-boot-starter</url>
+    <connection>scm:git:https://github.com/jpmsilva/rewrite-spring-boot-starter.git</connection>
+    <developerConnection>scm:git:https://github.com/jpmsilva/rewrite-spring-boot-starter.git
+    </developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>jpmsilva</id>
+      <name>Joao Silva</name>
+      <email>joao.p.m.silva@gmail.com</email>
+      <url>https://github.com/jpmsilva</url>
+      <timezone>Europe/Lisbon</timezone>
+    </developer>
+  </developers>
+
+  <properties>
+    <java.version>1.8</java.version>
+
+    <!-- Plugin version -->
+    <plugin.compiler.version>3.7.0</plugin.compiler.version>
+    <plugin.jar.version>3.0.2</plugin.jar.version>
+    <plugin.site.version>3.7</plugin.site.version>
+    <plugin.github-site.version>0.12</plugin.github-site.version>
+    <plugin.nexus-staging.version>1.6.8</plugin.nexus-staging.version>
+    <plugin.deploy.version>2.8.2</plugin.deploy.version>
+    <plugin.project-info-reports.version>2.9</plugin.project-info-reports.version>
+    <plugin.jgitflow.version>1.0-m5.1</plugin.jgitflow.version>
+    <plugin.gpg.version>1.6</plugin.gpg.version>
+    <plugin.source.version>3.0.1</plugin.source.version>
+    <plugin.javadoc.version>3.0.0</plugin.javadoc.version>
+    <plugin.checkstyle.version>3.0.0</plugin.checkstyle.version>
+    <plugin.github-release.version>1.2.0</plugin.github-release.version>
+    <plugin.jxr.version>2.5</plugin.jxr.version>
+    <plugin.pmd.version>3.9.0</plugin.pmd.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <org.springframework.boot.version>2.0.0.RELEASE</org.springframework.boot.version>
+  </properties>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <site>
+      <id>github-pages-sites</id>
+      <name>Deployment through GitHub's site deployment plugin</name>
+      <url>_versions/${project.version}</url>
+    </site>
+  </distributionManagement>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.github.jpmsilva.groundlevel-utilities</groupId>
+        <artifactId>groundlevel-utilities</artifactId>
+        <version>1.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.ocpsoft.rewrite</groupId>
+        <artifactId>rewrite-servlet</artifactId>
+        <version>3.4.2.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.ocpsoft.rewrite</groupId>
+        <artifactId>rewrite-config-proxy</artifactId>
+        <version>3.4.2.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.ocpsoft.logging</groupId>
+        <artifactId>logging-adapter-slf4j</artifactId>
+        <version>1.0.5.Final</version>
+      </dependency>
+      <dependency>
+        <!-- Import dependency management from Spring Boot -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${org.springframework.boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.github.jpmsilva.groundlevel-utilities</groupId>
+      <artifactId>groundlevel-utilities</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ocpsoft.rewrite</groupId>
+      <artifactId>rewrite-servlet</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ocpsoft.rewrite</groupId>
+      <artifactId>rewrite-config-proxy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ocpsoft.logging</groupId>
+      <artifactId>logging-adapter-slf4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${plugin.compiler.version}</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${plugin.jar.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${plugin.site.version}</version>
+          <configuration>
+            <skipDeploy>true</skipDeploy>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-markdown</artifactId>
+              <version>1.8</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
+          <groupId>com.github.github</groupId>
+          <artifactId>site-maven-plugin</artifactId>
+          <version>${plugin.github-site.version}</version>
+          <configuration>
+            <server>github</server>
+            <message>New site version: ${project.version}</message>
+            <merge>true</merge>
+            <repositoryOwner>jpmsilva</repositoryOwner>
+            <repositoryName>rewrite-spring-boot-starter-site</repositoryName>
+            <branch>refs/heads/master</branch>
+            <includes>
+              <include>**/*</include>
+            </includes>
+            <path>${project.distributionManagement.site.url}</path>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>${plugin.nexus-staging.version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>ossrh</serverId>
+            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${plugin.deploy.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${plugin.project-info-reports.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>${plugin.jgitflow.version}</version>
+          <configuration>
+            <flowInitContext>
+              <masterBranchName>master</masterBranchName>
+              <developBranchName>development</developBranchName>
+              <featureBranchPrefix>feature-</featureBranchPrefix>
+              <releaseBranchPrefix>release-</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+              <versionTagPrefix>version-</versionTagPrefix>
+            </flowInitContext>
+            <noDeploy>false</noDeploy>
+            <squash>false</squash>
+            <scmCommentPrefix>[RELEASE]</scmCommentPrefix>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <pushReleases>true</pushReleases>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${plugin.gpg.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${plugin.source.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${plugin.javadoc.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${plugin.checkstyle.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>8.8</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
+          <groupId>de.jutzig</groupId>
+          <artifactId>github-release-plugin</artifactId>
+          <version>${plugin.github-release.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>${plugin.jxr.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>${plugin.pmd.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>site</goal>
+            </goals>
+            <phase>site-deploy</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>checkstyle</goal>
+            </goals>
+            <configuration>
+              <failsOnError>true</failsOnError>
+              <configLocation>google_checkstyle.xml</configLocation>
+              <consoleOutput>true</consoleOutput>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+              <goal>cpd-check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>release-profile</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <extensions>true</extensions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>de.jutzig</groupId>
+            <artifactId>github-release-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>github-release</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>release</goal>
+                </goals>
+                <configuration>
+                  <description>Version ${project.version}</description>
+                  <releaseName>${project.version}</releaseName>
+                  <tag>version-${project.version}</tag>
+                  <repositoryId>jpmsilva/rewrite-spring-boot-starter</repositoryId>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>all</id>
+            <reports>
+              <report>index</report>
+              <report>dependencies</report>
+              <report>license</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>top</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>index</report>
+              <report>project-team</report>
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>scm</report>
+              <report>distribution-management</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>default</id>
+            <!-- overwrite the default javadoc set inherited to all child modules, so as to not generate multiple apidocs folders -->
+            <reports>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <failsOnError>true</failsOnError>
+          <configLocation>google_checkstyle.xml</configLocation>
+          <consoleOutput>true</consoleOutput>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <inherited>false</inherited>
+        <reportSets>
+          <reportSet>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>pmd</report>
+              <report>cpd</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>
