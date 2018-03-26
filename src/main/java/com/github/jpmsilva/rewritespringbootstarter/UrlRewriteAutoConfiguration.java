@@ -139,12 +139,12 @@ public class UrlRewriteAutoConfiguration {
    * @return a new RewriteFilter.
    */
   @Bean
-  FilterRegistrationBean<RewriteFilter> rewriteFilter(ServletContext servletContext, ApplicationContext applicationContext) {
+  FilterRegistrationBean rewriteFilter(ServletContext servletContext, ApplicationContext applicationContext) {
     List<ConfigurationBuilder> builders = getSortedBeansOfType(applicationContext, ConfigurationBuilder.class);
     servletContext.setInitParameter(CONFIG_BASE_PACKAGES, "none");
     servletContext.setAttribute(SpringConfigurationProvider.SERVLET_CONFIG_ATTRIBUTE, builders);
 
-    FilterRegistrationBean<RewriteFilter> rewriteFilter = new FilterRegistrationBean<>();
+    FilterRegistrationBean rewriteFilter = new FilterRegistrationBean();
     rewriteFilter.setFilter(new RewriteFilter());
     rewriteFilter.addUrlPatterns("/*");
     rewriteFilter.setOrder(urlRewriteProperties.getFilterOrder());
