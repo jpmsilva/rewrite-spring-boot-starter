@@ -21,7 +21,7 @@ limitations under the License.
 
   <groupId>com.github.jpmsilva.rewrite-spring-boot-starter</groupId>
   <artifactId>rewrite-spring-boot-starter</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <name>rewrite-spring-boot-starter</name>
   <description>A Spring Boot starter for OCPSoft Rewrite</description>
