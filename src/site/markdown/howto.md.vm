@@ -1,0 +1,83 @@
+#set($h1 = '#')
+#set($h2 = '##')
+#set($h3 = '###')
+#set($h4 = '####')
+
+$h1 How to use
+
+Import the `rewrite-spring-boot-starter` module as a dependency into your Spring Boot application:
+
+```xml
+  <dependencies>
+    <dependency>
+      <groupId>com.github.jpmsilva.rewrite-spring-boot-starter</groupId>
+      <artifactId>rewrite-spring-boot-starter</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+```
+
+Auto-configuration takes place through the class [UrlRewriteAutoConfiguration](apidocs/com/github/jpmsilva/rewritespringbootstarter/UrlRewriteAutoConfiguration.html).
+
+Simple rules can be defined in the application.yml file, under the key `rewrite`. Four types of simple rules are supported:
+
+* forwards
+* permanent redirects
+* temporary redirects
+* proxies
+
+$h2 Sample simple forward rule
+
+The following rule forwards requests to the context `/test1` to go to `/test2`.
+
+```yaml
+rewrite:
+  forwards:
+    '[/test1]': /test2
+```
+
+Under the above rule, the following sample rewrites would take place:
+
+* `/test1` → `/test2`
+* `/test1/other-path` → `/test2/other-path`
+* `/test1/?with-argument=true` → `/test2/?with-argument=true`
+
+$h2 Sample simple proxy rule
+
+The following rule proxies requests to the context `/test1` to go to `http://example.test/test1`.
+
+```yaml
+rewrite:
+  proxies:
+    '[/test1]': http://example.test/test1
+```
+
+$h2 Complex rules
+
+Other than the simple rules supported from the application properties, you can take full control
+of the OCPSoft Rewrite API by creating beans of the type `ConfigurationBuilder` containing whatever rewrite rules you want to use.
+
+The following example shows a Java configuration class emiting sample rewrite rules:
+
+```java
+
+@Configuration
+public class MyConfiguration {
+
+  @Bean
+  ConfigurationBuilder myRules() {
+    ConfigurationBuilder builder = ConfigurationRuleBuilder.begin();
+    builder
+        .addRule()
+        .when(Direction.isInbound().and(Path.matches("/test1")))
+        .perform(Redirect.permanent("/test2"));
+    return builder;
+  }
+}
+```
+
+$h2 Filter priority
+
+The OCPSoft Rewrite filter is installed with the priority specified in the property `rewrite.filter-order`.
+
+This value can be adjusted to give more or less priority over other filters in the same web application.

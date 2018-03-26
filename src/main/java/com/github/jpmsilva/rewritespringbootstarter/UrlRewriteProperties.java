@@ -55,6 +55,8 @@ public class UrlRewriteProperties {
 
   /**
    * Rules for forwarding requests (that means that URL changes will not be visible in the client's browser.
+   *
+   * @return a map containing as keys the source contexts and as values the destination contexts.
    */
   public Map<String, String> getForwards() {
     return forwards;
@@ -62,6 +64,8 @@ public class UrlRewriteProperties {
 
   /**
    * Rules for redirects with code 301.
+   *
+   * @return a map containing as keys the source contexts and as values the destination contexts.
    */
   public Map<String, String> getPermanentRedirects() {
     return permanentRedirects;
@@ -69,6 +73,8 @@ public class UrlRewriteProperties {
 
   /**
    * Rules for redirects with code 300.
+   *
+   * @return a map containing as keys the source contexts and as values the destination contexts.
    */
   public Map<String, String> getTemporaryRedirects() {
     return temporaryRedirects;
@@ -76,6 +82,8 @@ public class UrlRewriteProperties {
 
   /**
    * Rules for serving requests from a remote HTTP/HTTPS server.
+   *
+   * @return a map containing as keys the source contexts and as values the destination URLs.
    */
   public Map<String, String> getProxies() {
     return proxies;

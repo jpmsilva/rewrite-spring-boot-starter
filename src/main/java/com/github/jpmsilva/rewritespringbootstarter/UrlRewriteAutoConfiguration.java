@@ -32,6 +32,7 @@ import org.ocpsoft.rewrite.servlet.config.proxy.Proxy;
 import org.ocpsoft.rewrite.servlet.impl.RewriteServletContextListener;
 import org.ocpsoft.rewrite.servlet.impl.RewriteServletRequestListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
@@ -44,6 +45,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(UrlRewriteProperties.class)
+@ConditionalOnWebApplication
 public class UrlRewriteAutoConfiguration {
 
   private final UrlRewriteProperties urlRewriteProperties;
